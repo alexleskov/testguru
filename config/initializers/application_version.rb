@@ -1,3 +1,3 @@
+# frozen_string_literal: true
 
-VERSION = "0.1.0"
-puts "Application version is #{VERSION}"
+VERSION = '0.1.0'
