@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  complete_status: false
+  success_status: false
+  score: 1
+
+two:
+  complete_status: false
+  success_status: false
+  score: 1
