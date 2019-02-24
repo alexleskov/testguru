@@ -1,8 +1,8 @@
-class User < ApplicationRecord
-  has_many :test_stats
-  has_many :tests, through: :test_stats
+# frozen_string_literal: true
 
+class User < ApplicationRecord
   def tests_by_level(value)
-    self.tests.where(level: value)
+    tests_ids = TestStat.where(user_id: id, test_id: Test.where(level: value)).pluck(:test_id)
+    Test.find(tests_ids)
   end
 end

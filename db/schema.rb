@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2019_02_18_184530) do
 
   create_table "test_stats", force: :cascade do |t|
     t.boolean "complete_status", default: false, null: false
-    t.boolean "success_status", default: false, null: false
     t.integer "score", default: 0, null: false
     t.integer "user_id"
     t.integer "test_id"

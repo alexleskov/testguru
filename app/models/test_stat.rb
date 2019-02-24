@@ -1,4 +1,4 @@
+# frozen_string_literal: true
+
 class TestStat < ApplicationRecord
-  belongs_to :user
-  belongs_to :test
 end
