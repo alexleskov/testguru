@@ -8,47 +8,48 @@
 
 categories = Category.create!([{ title: 'Rails'}, { title: 'HTML'}, { title: 'PHP'}, { title: 'OOP'}])
 
-tests = Test.create!([{ title: 'Base in Rails', category_id: 1, level: 3 },
-                     { title: 'Base in HTML', category_id: 2 },
-                     { title: 'Base in PHP', category_id: 3, level: 2 },
-                     { title: 'Pro in PHP', category_id: 3, level: 3 },
-                     { title: 'Base in OOP', category_id: 4, level: 2 }])
+tests = Test.create!([{ title: 'Base in Rails', category_id: categories[0].id, level: 3 },
+                     { title: 'Base in HTML', category_id: categories[1].id },
+                     { title: 'Base in PHP', category_id: categories[2].id, level: 2 },
+                     { title: 'Pro in PHP', category_id: categories[2].id, level: 3 },
+                     { title: 'Base in OOP', category_id: categories[3].id, level: 2 }])
 
-questions = Question.create!([{ body: 'Question 1', test_id: 1 },
-                             { body: 'Question 2', test_id: 1 },
-                             { body: 'Question 1', test_id: 2 },
-                             { body: 'Question 2', test_id: 2 },
-                             { body: 'Question 1', test_id: 3 },
-                             { body: 'Question 2', test_id: 3 },
-                             { body: 'Question 1', test_id: 4 },
-                             { body: 'Question 2', test_id: 4 },
-                             { body: 'Question 1', test_id: 5 },
-                             { body: 'Question 2', test_id: 5 }])
+questions = Question.create!([{ body: 'Question 1', test_id: tests[0].id },
+                             { body: 'Question 2', test_id: tests[0].id },
+                             { body: 'Question 1', test_id: tests[1].id },
+                             { body: 'Question 2', test_id: tests[1].id },
+                             { body: 'Question 1', test_id: tests[2].id },
+                             { body: 'Question 2', test_id: tests[2].id },
+                             { body: 'Question 1', test_id: tests[3].id },
+                             { body: 'Question 2', test_id: tests[3].id },
+                             { body: 'Question 1', test_id: tests[4].id },
+                             { body: 'Question 2', test_id: tests[4].id }])
 
-answers = Answer.create!([{ body: 'Yes', question_id: 1, correct: true },
-                         { body: 'No', question_id: 1 },
-                         { body: 'Yes', question_id: 2, correct: true },
-                         { body: 'No', question_id: 2 },
-                         { body: 'Yes', question_id: 3, correct: true },
-                         { body: 'No', question_id: 3 },
-                         { body: 'Yes', question_id: 4, correct: true },
-                         { body: 'No', question_id: 4 },
-                         { body: 'Yes', question_id: 5, correct: true },
-                         { body: 'No', question_id: 5 },
-                         { body: 'Yes', question_id: 6, correct: true },
-                         { body: 'No', question_id: 6 },
-                         { body: 'Yes', question_id: 7, correct: true },
-                         { body: 'No', question_id: 7 },
-                         { body: 'Yes', question_id: 8, correct: true },
-                         { body: 'No', question_id: 8 },
-                         { body: 'Yes', question_id: 9, correct: true },
-                         { body: 'No', question_id: 9 },
-                         { body: 'Yes', question_id: 10, correct: true },
-                         { body: 'No', question_id: 10 }])
+answers = Answer.create!([{ body: 'Yes', question_id: questions[0].id, correct: true },
+                         { body: 'No', question_id: questions[0].id },
+                         { body: 'Yes', question_id: questions[1].id, correct: true },
+                         { body: 'No', question_id: questions[1].id },
+                         { body: 'Yes', question_id: questions[2].id, correct: true },
+                         { body: 'No', question_id: questions[2].id },
+                         { body: 'Yes', question_id: questions[3].id, correct: true },
+                         { body: 'No', question_id: questions[3].id },
+                         { body: 'Yes', question_id: questions[4].id, correct: true },
+                         { body: 'No', question_id: questions[4].id },
+                         { body: 'Yes', question_id: questions[5].id, correct: true },
+                         { body: 'No', question_id: questions[5].id },
+                         { body: 'Yes', question_id: questions[6].id, correct: true },
+                         { body: 'No', question_id: questions[6].id },
+                         { body: 'Yes', question_id: questions[7].id, correct: true },
+                         { body: 'No', question_id: questions[7].id },
+                         { body: 'Yes', question_id: questions[8].id, correct: true },
+                         { body: 'No', question_id: questions[8].id },
+                         { body: 'Yes', question_id: questions[9].id, correct: true },
+                         { body: 'No', question_id: questions[9].id }])
 
 users = User.create!([{ fullname: 'Administrator', role: 'admin' },
                      { fullname: 'Alex Leskov', role: 'user' },
                      { fullname: 'James Bond', role: 'user' }])
 
-test_stats = TestStat.create!([{ user_id: 2, test_id: 1 }, { user_id: 2, test_id: 2 },
-                               { user_id: 2, test_id: 4 }])
+test_stats = TestStat.create!([{ user_id: users[1].id, test_id: tests[0].id },
+                              { user_id: users[1].id, test_id: tests[1].id },
+                              { user_id: users[1].id, test_id: tests[3].id }])

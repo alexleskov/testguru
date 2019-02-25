@@ -2,7 +2,7 @@
 
 class User < ApplicationRecord
   def tests_by_level(value)
-    tests_ids = TestStat.where(user_id: id, test_id: Test.where(level: value)).pluck(:test_id)
-    Test.find(tests_ids)
+    Test.joins("INNER JOIN test_stats ON test_stats.test_id = tests.id
+                AND test_stats.user_id = '#{id}' AND tests.level = '#{value}'")
   end
 end
