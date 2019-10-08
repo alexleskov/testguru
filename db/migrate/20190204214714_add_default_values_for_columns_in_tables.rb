@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class AddDefaultValuesForColumnsInTables < ActiveRecord::Migration[5.2]
   def change
     change_column_default(:answers, :correct, false)
-    change_column_default(:tests, :level, 1)  
+    change_column_default(:tests, :level, 1)
   end
 end
