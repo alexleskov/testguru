@@ -10,84 +10,82 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_10_172441) do
-
-  create_table "answers", force: :cascade do |t|
-    t.string "body", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "correct", default: false, null: false
-    t.integer "question_id", null: false
-    t.index ["question_id"], name: "index_answers_on_question_id"
+ActiveRecord::Schema.define(version: 20_191_010_172_441) do
+  create_table 'answers', force: :cascade do |t|
+    t.string 'body', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.boolean 'correct', default: false, null: false
+    t.integer 'question_id', null: false
+    t.index ['question_id'], name: 'index_answers_on_question_id'
   end
 
-  create_table "authors", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "test_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["test_id"], name: "index_authors_on_test_id"
-    t.index ["user_id"], name: "index_authors_on_user_id"
+  create_table 'authors', force: :cascade do |t|
+    t.integer 'user_id'
+    t.integer 'test_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['test_id'], name: 'index_authors_on_test_id'
+    t.index ['user_id'], name: 'index_authors_on_user_id'
   end
 
-  create_table "categories", force: :cascade do |t|
-    t.string "title", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'categories', force: :cascade do |t|
+    t.string 'title', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "categories_tests", id: false, force: :cascade do |t|
-    t.integer "test_id"
-    t.integer "category_id"
-    t.index ["category_id", "test_id"], name: "index_categories_tests_on_category_id_and_test_id"
-    t.index ["category_id"], name: "index_categories_tests_on_category_id"
-    t.index ["test_id", "category_id"], name: "index_categories_tests_on_test_id_and_category_id"
-    t.index ["test_id"], name: "index_categories_tests_on_test_id"
+  create_table 'categories_tests', id: false, force: :cascade do |t|
+    t.integer 'test_id'
+    t.integer 'category_id'
+    t.index %w[category_id test_id], name: 'index_categories_tests_on_category_id_and_test_id'
+    t.index ['category_id'], name: 'index_categories_tests_on_category_id'
+    t.index %w[test_id category_id], name: 'index_categories_tests_on_test_id_and_category_id'
+    t.index ['test_id'], name: 'index_categories_tests_on_test_id'
   end
 
-  create_table "question_stats", force: :cascade do |t|
-    t.boolean "success"
-    t.integer "user_id"
-    t.integer "question_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["question_id"], name: "index_question_stats_on_question_id"
-    t.index ["user_id"], name: "index_question_stats_on_user_id"
+  create_table 'question_stats', force: :cascade do |t|
+    t.boolean 'success'
+    t.integer 'user_id'
+    t.integer 'question_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['question_id'], name: 'index_question_stats_on_question_id'
+    t.index ['user_id'], name: 'index_question_stats_on_user_id'
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.string "body", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "test_id", null: false
-    t.index ["test_id"], name: "index_questions_on_test_id"
+  create_table 'questions', force: :cascade do |t|
+    t.string 'body', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'test_id', null: false
+    t.index ['test_id'], name: 'index_questions_on_test_id'
   end
 
-  create_table "test_stats", force: :cascade do |t|
-    t.boolean "complete_status", default: false, null: false
-    t.integer "score", default: 0, null: false
-    t.integer "user_id"
-    t.integer "test_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["test_id"], name: "index_test_stats_on_test_id"
-    t.index ["user_id"], name: "index_test_stats_on_user_id"
+  create_table 'test_stats', force: :cascade do |t|
+    t.boolean 'complete_status', default: false, null: false
+    t.integer 'score', default: 0, null: false
+    t.integer 'user_id'
+    t.integer 'test_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['test_id'], name: 'index_test_stats_on_test_id'
+    t.index ['user_id'], name: 'index_test_stats_on_user_id'
   end
 
-  create_table "tests", force: :cascade do |t|
-    t.string "title", null: false
-    t.integer "level", default: 1
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "category_id"
-    t.index ["category_id"], name: "index_tests_on_category_id"
+  create_table 'tests', force: :cascade do |t|
+    t.string 'title', null: false
+    t.integer 'level', default: 1
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.integer 'category_id'
+    t.index ['category_id'], name: 'index_tests_on_category_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "fullname", null: false
-    t.string "role", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'fullname', null: false
+    t.string 'role', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
-
 end
