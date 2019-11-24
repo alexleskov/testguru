@@ -8,13 +8,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+users = User.create!([{ fullname: 'Administrator', role: 'admin' },
+                      { fullname: 'Alex Leskov', role: 'user' },
+                      { fullname: 'James Bond', role: 'user' }])
+
 categories = Category.create!([{ title: 'Rails' }, { title: 'HTML' }, { title: 'PHP' }, { title: 'OOP' }])
 
-tests = Test.create!([{ title: 'Base in Rails', category_id: categories[0].id, level: 3 },
-                      { title: 'Base in HTML', category_id: categories[1].id },
-                      { title: 'Base in PHP', category_id: categories[2].id, level: 2 },
-                      { title: 'Pro in PHP', category_id: categories[2].id, level: 3 },
-                      { title: 'Base in OOP', category_id: categories[3].id, level: 2 }])
+tests = Test.create!([{ title: 'Base in Rails', category_id: categories[0].id, level: 3, user_id: 1 },
+                      { title: 'Base in HTML', category_id: categories[1].id, user_id: 1 },
+                      { title: 'Base in PHP', category_id: categories[2].id, level: 2, user_id: 1 },
+                      { title: 'Pro in PHP', category_id: categories[2].id, level: 3, user_id: 1 },
+                      { title: 'Base in OOP', category_id: categories[3].id, level: 2, user_id: 1 }])
 
 questions = Question.create!([{ body: 'Question 1', test_id: tests[0].id },
                               { body: 'Question 2', test_id: tests[0].id },
@@ -47,10 +51,6 @@ answers = Answer.create!([{ body: 'Yes', question_id: questions[0].id, correct: 
                           { body: 'No', question_id: questions[8].id },
                           { body: 'Yes', question_id: questions[9].id, correct: true },
                           { body: 'No', question_id: questions[9].id }])
-
-users = User.create!([{ fullname: 'Administrator', role: 'admin' },
-                      { fullname: 'Alex Leskov', role: 'user' },
-                      { fullname: 'James Bond', role: 'user' }])
 
 test_stats = TestStat.create!([{ user_id: users[1].id, test_id: tests[0].id },
                                { user_id: users[1].id, test_id: tests[1].id },
